@@ -20,10 +20,9 @@ app.controller('appController', function($scope, $filter) {
         can_array = [];
         applify_array = [];
         for (var i = 0; i < $scope.evaluated.length; i++) {
-            if ($scope.evaluated[i].investmentNetwork === "Applify") {
-                console.log("Here");
+            if ($scope.evaluated[i].investmentNetwork === "Applyifi Investment Network") {
                 applify_array.push($scope.evaluated[i]);
-            } else if ($scope.evaluated[i].investmentNetwork === "Calcutta Angels") {
+            } else if ($scope.evaluated[i].investmentNetwork === "Calcutta Angels Network") {
                 can_array.push($scope.evaluated[i]);
             }
         }
