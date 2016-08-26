@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Funding</title>
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+</head>
+
+<body style="background:#ecf0f1" ng-app="fundingApp">
+    <div ng-controller="appController">
+        <p class="text-center" style="font-weight:bold;font-size:20px;">Metaiot Technologies</p>
+        <form class="form-inline container">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <label for="email">Total Round Amount</label>
+                        </td>
+                        <td>
+                            <input type="number" class="form-control" id="total_amount" ng-model="total_amount">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="pwd">Tranch Amount</label>
+                        </td>
+                        <td>
+                            <input type="number" class="form-control" ng-model="tranch_amount">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="pwd">Enter CAN Amount for this round</label>
+                        </td>
+                        <td>
+                            <input type="number" class="form-control" ng-model="can_amount">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="pwd">Enter Applify Amount for this round</label>
+                        </td>
+                        <td>
+                            <input type="number" class="form-control" ng-model="applify_amount = total_amount-can_amount">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="pwd">Upload CSV</label>
+                        </td>
+                        <td>
+                            <input type="file" class="form-control" file-change="handler($event,files)" ng-model="MyFiles">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="submit" class="btn btn-primary" ng-click="calculate()" />
+                        </td>
+                        <td>
+                            <p style="font-weight:bold;font-size:2rem;">Percentage of round in this tranch {{percentage_of_round}} %
+                            </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+        <div class="form-group">
+        </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Investment Network Name</th>
+                    <th>Individual Name</th>
+                    <th>Total Amount by Individual</th>
+                    <th>Tranch Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="datum in data">
+                    <td>{{datum.investmentNetwork}}</td>
+                    <td>{{datum.individualName}}</td>
+                    <td>{{datum.individualAmount}}</td>
+                    <td style="font-size:2rem">{{datum.individualContri}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="papaparse.js"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+</body>
+
+</html>
