@@ -14,34 +14,62 @@
                 <tbody>
                     <tr>
                         <td>
-                            <label for="email">Total Round Amount</label>
+                            <label for="email">Seed Round Amount</label>
                         </td>
                         <td>
-                            <input type="number" class="form-control" id="total_amount" ng-model="total_amount">
+                            <input type="number" class="form-control" id="total_amount" ng-model="total_amount" ng-change="calcApplyifi()">
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <label for="pwd">Tranch Amount</label>
+                            <label for="email">CAN Seed Round Amount</label>
                         </td>
                         <td>
-                            <input type="number" class="form-control" ng-model="tranch_amount">
+                            <input type="number" class="form-control" id="total_amount" ng-model="can_round_amount" ng-change="changeApp()">
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <label for="pwd">Enter CAN Amount for this round</label>
+                            <label for="email">Applyifi Round Amount</label>
                         </td>
                         <td>
-                            <input type="number" class="form-control" ng-model="can_amount">
+                            <input type="number" class="form-control" id="total_amount" ng-model="app_round_amount" ng-change="changeCan()">
                         </td>
                     </tr>
                     <tr>
-                        <td> 
-                            <label for="pwd">Enter Applify Amount for this round</label>
+                        <td>
+                            <label for="email">CAN Contribution</label>
+                        </td>
+                        <td>{{can_contri}} %</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="email">Applyifi Contribution</label>
+                        </td>
+                        <td> {{applyifi_contri}} %</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="pwd">CAN Amount for Tranche 2</label>
                         </td>
                         <td>
-                            <input type="number" class="form-control" ng-model="applify_amount = total_amount-can_amount">
+                            <input type="number" class="form-control" ng-model="can_amount" ng-change="calcApplyifi()">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="pwd">Applify Amount for Tranche 2</label>
+                        </td>
+                        <td>
+                            <input type="number" class="form-control" ng-model="applyifi_amount" ng-change="calcApplyifi()">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="pwd">Total Tranche 2 Amount</label>
+                        </td>
+                        <td>
+                            <input type="number" class="form-control" ng-disabled="true" ng-model="tranch_amount">
                         </td>
                     </tr>
                     <tr>
@@ -84,11 +112,13 @@
                 </tr>
             </tbody>
         </table>
+        <a href ng-csv="exportArray" class="btn btn-primary" csv-header="getHeader()" filename="investmentDetail.csv">Export to Excel</a>
     </div>
-    <script src="papaparse.js"></script>
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="bower_components/ng-csv/build/ng-csv.min.js"></script>
     <script type="text/javascript" src="app.js"></script>
 </body>
 
